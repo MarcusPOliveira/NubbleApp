@@ -15,7 +15,7 @@ type TextVariants =
   | 'paragraphCaptionSmall'
 
 //cifrão para declarar uma constante de estilos, Record para passar dois types: TextVariants seria o index e TextStyle o valor que o Typescript vai verificar se está sendo passado corretamente
-const $fontSizes: Record<TextVariants, TextStyle> = {
+export const $fontSizes: Record<TextVariants, TextStyle> = {
   headingLarge: { fontSize: 32, lineHeight: 38.4 },
   headingMedium: { fontSize: 22, lineHeight: 26.4 },
   headingSmall: { fontSize: 18, lineHeight: 23.4 },
@@ -29,7 +29,7 @@ const $fontSizes: Record<TextVariants, TextStyle> = {
 }
 
 //add as fontes customizadas na pasta src/assets/fonts e também em: android/app/src/main/assets/fonts
-const $fontFamily = {
+export const $fontFamily = {
   black: 'Satoshi-Black',
   blackItalic: 'Satoshi-BlackItalic',
   bold: 'Satoshi-Bold',
