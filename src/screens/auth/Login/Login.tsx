@@ -1,15 +1,17 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 
-import { RootStackParamList } from '../../../routes/Routes'
+import { RootStackParamList } from '@routes'
 import { LoginSchema, loginSchema } from './loginSchema'
-import { Text } from '../../../components/Text/Text'
-import { Button } from '../../../components/Button/Button'
-import { Screen } from '../../../components/Screen/Screen'
-import { FormTextInput } from '../../../components/Form/FormTextInput'
-import { FormPasswordInput } from '../../../components/Form/FormPasswordInput'
+import {
+  Button,
+  FormPasswordInput,
+  FormTextInput,
+  Screen,
+  Text,
+} from '@components'
 
 type ScreenProps = NativeStackScreenProps<RootStackParamList, 'Login'>
 
@@ -61,6 +63,7 @@ export function Login({ navigation }: ScreenProps) {
         preset="paragraphSmall"
         bold
         color="primary"
+        mt="s12"
         onPress={navigateToForgotPassword}
       >
         Esqueci minha senha

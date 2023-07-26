@@ -2,15 +2,12 @@ import React from 'react'
 import { KeyboardAvoidingView, Platform } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 
-import { useAppSafeArea } from '../../hooks/useAppSafeArea'
-import { useAppTheme } from '../../hooks/useAppTheme'
-import { Box, TouchableOpacityBox } from '../Box/Box'
-import { Icon } from '../Icon/Icon'
-import { Text } from '../Text/Text'
 import {
   ScrollViewContainer,
   ViewContainer,
 } from './components/ScreenContainer'
+import { useAppSafeArea, useAppTheme } from '@hooks'
+import { Box, Icon, Text, TouchableOpacityBox } from '@components'
 
 interface Props {
   children: React.ReactNode

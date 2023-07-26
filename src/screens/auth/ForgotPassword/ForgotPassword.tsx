@@ -7,13 +7,9 @@ import {
   forgotPasswordSchema,
   ForgotPasswordSchema,
 } from './forgotPasswordSchema'
-import { RootStackParamList } from '../../../routes/Routes'
-import { useResetNavigationSuccess } from '../../../hooks/useResetNavigationSuccess'
-import { Screen } from '../../../components/Screen/Screen'
-import { Text } from '../../../components/Text/Text'
-import { Button } from '../../../components/Button/Button'
-import { Box } from '../../../components/Box/Box'
-import { FormTextInput } from '../../../components/Form/FormTextInput'
+import { RootStackParamList } from '@routes'
+import { useResetNavigationSuccess } from '@hooks'
+import { Box, Button, FormTextInput, Screen, Text } from '@components'
 
 type ScreenProps = NativeStackScreenProps<RootStackParamList, 'ForgotPassword'>
 

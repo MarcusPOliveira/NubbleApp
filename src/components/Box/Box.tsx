@@ -17,7 +17,7 @@ import {
   SpacingShorthandProps,
 } from '@shopify/restyle'
 
-import { Theme } from '../../theme/theme'
+import { Theme } from '@theme'
 
 //pegando as props do meu componente Box
 export type BoxProps = React.ComponentProps<typeof Box>
