@@ -7,7 +7,9 @@ import {
 } from 'react-native'
 
 import { useAppTheme } from '@hooks'
-import { $fontFamily, $fontSizes, Box, BoxProps, Text } from '@components'
+
+import { Box, BoxProps } from '../Box/Box'
+import { $fontFamily, $fontSizes, Text } from '../Text/Text'
 
 export interface TextInputProps extends RNTextInputProps {
   label: string
