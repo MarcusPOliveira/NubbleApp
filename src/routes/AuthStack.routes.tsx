@@ -5,7 +5,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { IconProps } from '@components'
 import { ForgotPassword, Login, SignUp, Success } from '@screens'
 
-export type RootStackParamList = {
+export type AuthStackParamList = {
   Login: undefined
   SignUp: undefined
   Success: {
@@ -16,7 +16,7 @@ export type RootStackParamList = {
   ForgotPassword: undefined
 }
 
-const Stack = createNativeStackNavigator<RootStackParamList>()
+const Stack = createNativeStackNavigator<AuthStackParamList>()
 
 export function AuthStackRoutes() {
   return (

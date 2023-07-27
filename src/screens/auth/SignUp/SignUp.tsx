@@ -1,7 +1,6 @@
 import React from 'react'
 
 import { zodResolver } from '@hookform/resolvers/zod'
-import { NativeStackScreenProps } from '@react-navigation/native-stack'
 import { useForm } from 'react-hook-form'
 
 import {
@@ -13,13 +12,11 @@ import {
   Text,
 } from '@components'
 import { useResetNavigationSuccess } from '@hooks'
-import { RootStackParamList } from '@routes'
+import { AuthScreenProps } from '@routes'
 
 import { SignUpSchema, signUpSchema } from './signUpSchema'
 
-type ScreenProps = NativeStackScreenProps<RootStackParamList, 'SignUp'>
-
-export function SignUp({ navigation }: ScreenProps) {
+export function SignUp({ navigation }: AuthScreenProps<'SignUp'>) {
   const { reset } = useResetNavigationSuccess()
 
   const { control, formState, handleSubmit } = useForm<SignUpSchema>({
