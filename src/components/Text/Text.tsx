@@ -79,7 +79,7 @@ type SRTextProps = React.ComponentProps<typeof SRText>
 
 const SRText = createText<Theme>()
 
-interface TextProps extends SRTextProps {
+export interface TextProps extends SRTextProps {
   preset?: TextVariants
   bold?: boolean
   italic?: boolean
