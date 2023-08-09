@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
-import { Dimensions, FlatList, Image, ListRenderItemInfo } from 'react-native'
+import { Dimensions, FlatList, ListRenderItemInfo } from 'react-native'
 
 import { Post, postService } from '@domain'
 
-import { Box, Button, PostItem, Screen, Text } from '@components'
+import { PostItem, Screen } from '@components'
 import { AppTabScreenProps } from '@routes'
 
 export function Home({ navigation }: AppTabScreenProps<'Home'>) {
@@ -21,10 +21,11 @@ export function Home({ navigation }: AppTabScreenProps<'Home'>) {
   }
 
   return (
-    <Screen>
+    <Screen style={{ paddingBottom: 0, paddingHorizontal: 0, paddingTop: 0 }}>
       <FlatList
         data={postList}
         keyExtractor={(item) => item.id}
+        showsVerticalScrollIndicator={false}
         renderItem={renderItem}
       />
     </Screen>
