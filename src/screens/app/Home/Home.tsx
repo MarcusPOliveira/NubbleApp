@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react'
-import { Dimensions, FlatList, ListRenderItemInfo } from 'react-native'
+import { FlatList, ListRenderItemInfo } from 'react-native'
 
 import { Post, postService } from '@domain'
 
 import { PostItem, Screen } from '@components'
 import { AppTabScreenProps } from '@routes'
+
+import { HomeHeader } from './components/HomeHeader'
 
 export function Home({ navigation }: AppTabScreenProps<'Home'>) {
   const [postList, setPostList] = useState<Post[]>([])
@@ -22,6 +24,7 @@ export function Home({ navigation }: AppTabScreenProps<'Home'>) {
 
   return (
     <Screen style={{ paddingBottom: 0, paddingHorizontal: 0, paddingTop: 0 }}>
+      <HomeHeader />
       <FlatList
         data={postList}
         keyExtractor={(item) => item.id}
