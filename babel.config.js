@@ -13,6 +13,7 @@ module.exports = {
           '@theme': './src/theme',
           '@domain': './src/domain',
           '@brand': './src/assets/brand',
+          '@api': './src/api',
         },
       },
     ],

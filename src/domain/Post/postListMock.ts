@@ -1,5 +1,5 @@
 /* eslint-disable quotes */
-import { Post } from './types'
+import { Post } from './postTypes'
 
 export const postListMock: Post[] = [
   {
