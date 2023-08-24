@@ -12,7 +12,7 @@ export interface Post {
   favoriteCount: number
 }
 
-export interface PostApi {
+export interface PostAPI {
   created_at: string
   id: number
   image_url: string

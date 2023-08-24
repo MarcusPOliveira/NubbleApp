@@ -1,21 +1,11 @@
-import { MetaDataPageAPI, PageAPI, api } from '@api'
+import { api, PageAPI, PageParams } from '@api'
 
-import { PostApi } from './postTypes'
+import { PostAPI } from './postTypes'
 
-async function getList(): Promise<PageAPI<PostApi>> {
-  // with fetch api
-  // let response = await fetch('http://127.0.0.1:3333/user/post', {
-  //   method: 'GET',
-  //   headers: {
-  //     Authorization:
-  //       'Bearer NA.QM6dw7w8FlJeyV72kWXeagn8dXNIb_5yCWKA9VSPzZe2J0Ha8aMxAN8J1MNz',
-  //   },
-  // })
-  // let data: PageAPI<PostApi> = await response.json()
-  // return data
-
-  // with axios
-  const response = await api.get<PageAPI<PostApi>>('/user/post')
+async function getList(params?: PageParams): Promise<PageAPI<PostAPI>> {
+  const response = await api.get<PageAPI<PostAPI>>('user/post', {
+    params,
+  })
   return response.data
 }
 
