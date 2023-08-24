@@ -8,37 +8,57 @@ export function usePostList() {
   const [error, setError] = useState<boolean | null>(null)
   const [postList, setPostList] = useState<Post[]>([])
   const [page, setPage] = useState(1)
+  const [hasNextPage, setHasNextPage] = useState(true)
 
-  async function fetchData() {
+  async function fetchInitialData() {
     try {
       setError(null)
       setIsLoading(true)
-      const list = await postService.getList(page)
-      setPostList((prev) => [...prev, ...list])
-      setPage((prev) => prev + 1)
-    } catch (er) {
-      console.log('error fetchData', er)
+      const { data, meta } = await postService.getList(1)
+      setPostList(data)
+      if (meta.hasNextPage) {
+        setPage(2)
+      } else {
+        setHasNextPage(false)
+      }
+    } catch (err) {
+      console.log('error - fetchInitialData:', err)
       setError(true)
     } finally {
       setIsLoading(false)
     }
   }
 
-  function fetchNextPage() {
-    if (!isLoading) {
-      fetchData()
+  async function fetchNextPage() {
+    if (isLoading || !hasNextPage) {
+      return
+    }
+    try {
+      setIsLoading(true)
+      const { data, meta } = await postService.getList(page)
+      setPostList((prev) => [...prev, ...data])
+      if (meta.hasNextPage) {
+        setPage((prev) => prev + 1)
+      } else {
+        setHasNextPage(false)
+      }
+    } catch (err) {
+      console.log('error - fetchNextPage: ', err)
+      setError(true)
+    } finally {
+      setIsLoading(false)
     }
   }
 
   useEffect(() => {
-    fetchData()
+    fetchInitialData()
   }, [])
 
   return {
     isLoading,
     error,
     postList,
-    refetch: fetchData,
+    refresh: fetchInitialData,
     fetchNextPage,
   }
 }
