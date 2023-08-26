@@ -12,7 +12,7 @@ export type AppStackParamList = {
   AppTabRoutes: NavigatorScreenParams<AppTabBottomParamList> //Conceito de Nesting Navigator
   Settings: undefined
   PostCommentScreen: {
-    postId: string
+    postId: number
   }
 }
 

@@ -34,7 +34,7 @@ export function Home({ navigation }: AppTabScreenProps<'Home'>) {
       <FlatList
         ref={flatListRef}
         data={postList}
-        keyExtractor={(item) => item.id}
+        keyExtractor={(item) => item.id.toString()}
         showsVerticalScrollIndicator={false}
         renderItem={renderItem}
         ListEmptyComponent={
