@@ -71,7 +71,7 @@ export function TextInput({
 }
 
 //cifrão para declarar estilos
-const $textInput: TextStyle = {
+export const $textInput: TextStyle = {
   padding: 0,
   flexGrow: 1,
   flexShrink: 1,
