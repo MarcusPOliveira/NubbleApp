@@ -3,28 +3,29 @@ import { Keyboard } from 'react-native'
 
 import { usePostCommentCreate } from '@domain'
 
-import { TextMesssage } from '@components'
+import { TextMessage } from '@components'
 
 interface Props {
   postId: number
+  onAddComment: () => void
 }
 
-export function PostCommentTextMessage({ postId }: Props) {
+export function PostCommentTextMessage({ postId, onAddComment }: Props) {
   const [comment, setComment] = useState('')
 
-  const { createComment } = usePostCommentCreate(postId)
-
-  function onSendComment() {
-    createComment(comment)
-    setComment('')
-    Keyboard.dismiss()
-  }
+  const { createComment } = usePostCommentCreate(postId, {
+    onSuccess: () => {
+      onAddComment()
+      setComment('')
+      Keyboard.dismiss()
+    },
+  })
 
   return (
-    <TextMesssage
+    <TextMessage
       value={comment}
       onChangeText={setComment}
-      onPressSend={onSendComment}
+      onPressSend={createComment}
       placeholder="Adicione um comentário"
     />
   )
