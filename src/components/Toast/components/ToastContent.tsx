@@ -38,13 +38,11 @@ export function ToastContent({ toast }: Props) {
 }
 
 const $boxStyle: BoxProps = {
-  alignSelf: 'center',
   alignItems: 'center',
   flexDirection: 'row',
   padding: 's16',
   borderRadius: 's16',
   gap: 's16',
-  position: 'absolute',
   backgroundColor: 'background',
   maxWidth: MAX_WIDTH,
   opacity: 0.95,
