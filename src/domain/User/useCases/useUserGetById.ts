@@ -1,32 +1,39 @@
-import { useCallback, useEffect, useState } from 'react'
+import { QueryKeys } from '@infra'
+import { useQuery } from '@tanstack/react-query'
 
 import { userService } from '../userService'
-import { User } from '../userTypes'
 
 export function useUserGetById(id: number) {
-  const [user, setUser] = useState<User>()
-  const [error, setError] = useState<boolean | null>(null)
-  const [isLoading, setIsLoading] = useState(false)
+  const { data, isLoading, isError } = useQuery({
+    queryKey: [QueryKeys.UserGetById, id],
+    queryFn: () => userService.getUserById(id),
+    staleTime: 1000 * 30, //30 seconds to refetch
+    // cacheTime: 5000
+  })
 
-  const getUserById = useCallback(async () => {
-    try {
-      setIsLoading(true)
-      const _user = await userService.getUserById(id)
-      setUser(_user)
-    } catch (err) {
-      setError(true)
-    } finally {
-      setIsLoading(false)
-    }
-  }, [id])
+  // const [user, setUser] = useState<User>()
+  // const [isError, setIsError] = useState<boolean | null>(null)
+  // const [isLoading, setIsLoading] = useState(false)
 
-  useEffect(() => {
-    getUserById()
-  }, [getUserById])
+  // const getUserById = useCallback(async () => {
+  //   try {
+  //     setIsLoading(true)
+  //     const _user = await userService.getUserById(id)
+  //     setUser(_user)
+  //   } catch (err) {
+  //     setIsError(true)
+  //   } finally {
+  //     setIsLoading(false)
+  //   }
+  // }, [id])
+
+  // useEffect(() => {
+  //   getUserById()
+  // }, [getUserById])
 
   return {
-    user,
-    error,
+    user: data,
+    isError,
     isLoading,
   }
 }
