@@ -6,3 +6,5 @@ export * from './Post/useCases/usePostList'
 export * from './PostComment'
 
 export * from './Auth'
+
+export * from './User'
